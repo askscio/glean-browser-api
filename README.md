@@ -4,4 +4,4 @@ This repo hosts recipes and examples for embedding Glean search with Glean Brows
 
 ## Documentation
 
-Visit [https://developers.glean.com](https://developers.glean.com) to view the full documentation.
+Visit [https://developers.glean.com/docs/browser_api/](https://developers.glean.com/docs/browser_api/) to view the full documentation.
