@@ -1,5 +1,5 @@
 {
-  "name": "search-autocomplete-chat-in-react-1-glean",
+  "name": "search-chat-separate-routes",
   "version": "1.0.0",
   "description": "An example that shows Search and Chat as separate pages setup with Glean Browser API.",
   "keywords": [],
