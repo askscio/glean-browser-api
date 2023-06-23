@@ -1,0 +1,16 @@
+*.iml
+*.pyc
+*~
+.*.swp
+.sw?
+.DS_Store
+.idea
+.ijwb
+node_modules
+.pytype
+*.log.txt
+.cache
+.vscode/*
+yarn-error.log
+.opensearch
+typescript/coverage
