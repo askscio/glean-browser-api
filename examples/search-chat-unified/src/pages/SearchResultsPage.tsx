@@ -39,6 +39,7 @@ const SearchResults = () => {
           chatId,
           supportedModes: ["search_results"],
           onSearch: handleSearch,
+          onChat: handleChat,
         });
         break;
       }
