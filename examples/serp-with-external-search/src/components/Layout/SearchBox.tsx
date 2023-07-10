@@ -30,6 +30,7 @@ const SearchBox = () => {
     window.EmbeddedSearch.renderSearchBox(containerRef.current, {
       authToken,
       backend,
+      enableActivityLogging: true,
       onSearch: handleSearch,
       onAuthTokenRequired: refreshAuthToken,
       query,
