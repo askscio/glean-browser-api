@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { EmbedConfigContext, EmbeddedSearchWidget, baseOptionsKey, searchOptionsKey } from "../../EmbedConfigContext";
 
 const SearchBox = () => {
   const containerRef = useRef(null);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const {config} = useContext(EmbedConfigContext)
 
   const query = searchParams.get("query") ?? "";
 
@@ -39,13 +41,11 @@ const SearchBox = () => {
       onSearch: handleSearch,
       onChat: handleChat,
       query,
-      searchBoxCustomizations: {
-        borderRadius: 24,
-        boxShadow: "none",
-        placeholderText: "Search for anything...",
-      },
+      ...config[baseOptionsKey],
+      ...config[searchOptionsKey],
+      ...config[EmbeddedSearchWidget.SearchBox]
     });
-  }, [handleChat, handleSearch, query]);
+  }, [handleChat, handleSearch, query, config]);
 
   return (
     <div
