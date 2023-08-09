@@ -1,6 +1,6 @@
-import { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext } from 'react'
 import ReactJsonView, { InteractionProps } from 'react-json-view'
-import { EmbedConfigContext } from '../EmbedConfigContext'
+import { ConfigType, EmbedConfigContext } from '../EmbedConfigContext'
 import { Drawer } from 'antd'
 
 interface SettingsDrawerProps {
@@ -10,7 +10,7 @@ interface SettingsDrawerProps {
 
 const SettingsDrawer = ({open, onClose}: SettingsDrawerProps) => {
     const {config, setConfig} = useContext(EmbedConfigContext)
-    const handleJsonUpdate = useCallback((props: InteractionProps) => setConfig(props.updated_src), [])
+    const handleJsonUpdate = useCallback((props: InteractionProps) => setConfig(props.updated_src as ConfigType), [])
 
     return (
     <Drawer 

@@ -62,9 +62,11 @@ export const defaultConfig = {
     },
 }
 
+export type ConfigType = typeof defaultConfig;
+
 const defaultContext = {
     config: defaultConfig,
-    setConfig: (config: any) => {},
+    setConfig: (config: ConfigType) => {},
 }
 
 export const EmbedConfigContext = createContext(defaultContext);
