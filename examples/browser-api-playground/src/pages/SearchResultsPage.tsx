@@ -33,13 +33,17 @@ const SearchResults = () => {
   useEffect(() => {
     if (!window.EmbeddedSearch) return;
 
+    const searchResultsCustomConfig = {
+      ...config[baseOptionsKey],
+      ...config[searchOptionsKey],
+      ...config[EmbeddedSearchWidget.SearchResults],
+    }
     window.EmbeddedSearch.renderSearchResults(containerRef.current, {
       query,
       onChat: handleChat,
       onSearch: handleSearch,
-      ...config[baseOptionsKey],
-      ...config[searchOptionsKey],
-      ...config[EmbeddedSearchWidget.SearchResults]
+      ...searchResultsCustomConfig,
+      // Add overrides to the custom config here
     });
   }, [query, handleSearch, handleChat, config]);
 

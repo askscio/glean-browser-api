@@ -1,25 +1,26 @@
 import { createContext } from "react";
 
+// Note: Don't use undefined in the default config, as it will be stripped out by JSON.stringify
 const baseOptions = {
-    authToken: undefined,
+    authToken: null,
     backend: 'https://salessavvy-test-be.glean.com',
     disableAnalytics: false,
     domainsToOpenInCurrentTab: [],
-    enableActivityLogging: true,
-    locale: undefined,
-    onAuthTokenRequired: () => {},
-    themeVariant: 'auto',
     urlsToOpenInCurrentTab: [],
+    enableActivityLogging: true,
+    locale: null,
+    themeVariant: 'auto',
+    theme: {},
     webAppUrl: "https://canary.glean.com"
 }
 
 const searchOptons = {
-    datasource: undefined,
+    datasource: null,
     datasourcesFilter: [],
 }
 
 const boxOptions = {
-    border: undefined,
+    border: null,
     borderRadius: 8,
     boxShadow: 'none',
     horizontalMargin: 0,

@@ -11,12 +11,16 @@ const ChatPage = () => {
   useEffect(() => {
     if (!window.EmbeddedSearch) return;
 
+    const chatCustomConfig = {
+      ...config[baseOptionsKey],
+      ...config[EmbeddedSearchWidget.Chat]
+    }
     window.EmbeddedSearch.renderChat(containerRef.current, {
       chatId: searchParams.get("chatId") ?? "",
       onChat: (chatId: string) => setSearchParams({ chatId }),
       onSearch: (query: string) => navigate({ pathname: '/search', search: new URLSearchParams({ query }).toString() }),
-      ...config[baseOptionsKey],
-      ...config[EmbeddedSearchWidget.Chat]
+      ...chatCustomConfig,
+      // Add overrides to the custom config here
     });
   }, [searchParams, setSearchParams, navigate, config]);
 

@@ -37,13 +37,17 @@ const SearchBox = () => {
   useEffect(() => {
     if (!window.EmbeddedSearch) return;
 
+    const searchBoxCustomConfig = {
+      ...config[baseOptionsKey],
+      ...config[searchOptionsKey],
+      ...config[EmbeddedSearchWidget.SearchBox]
+    }
     window.EmbeddedSearch.renderSearchBox(containerRef.current, {
       onSearch: handleSearch,
       onChat: handleChat,
       query,
-      ...config[baseOptionsKey],
-      ...config[searchOptionsKey],
-      ...config[EmbeddedSearchWidget.SearchBox]
+      ...searchBoxCustomConfig,
+      // Add overrides to the custom config here
     });
   }, [handleChat, handleSearch, query, config]);
 

@@ -2,23 +2,33 @@ const HomePage = () => (
   <div>
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-20">
-          <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">
-            Lorem Ipsum
-          </h2>
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-            Welcome
-          </h1>
+        <div className="flex flex-col w-full mb-20">
+          <div className="text-center">
+            <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">
+              Glean Help Center
+            </h2>
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+              Welcome
+            </h1>
+          </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            <p>We're delighted to have you here, and we're committed to providing you the support and resources you need to make the most of our products and services.</p>
+            <br/>
+            <strong>Getting Started:</strong>
+            <p>Whether you're a new customer or have been with us for years, our Help Center is designed to answer all your questions. Here's what you'll find:</p>
+            <br/>
+            <ol style={{listStyle: 'revert'}}>
+                <li><strong>FAQs:</strong> A collection of answers to our most frequently asked questions. Whether you need help with account setup or troubleshooting a specific issue, you'll likely find your answer here.</li>
+                <li><strong>Guides and Tutorials:</strong> Step-by-step guides and video tutorials to help you get started with our products and services, or master more advanced features.</li>
+                <li><strong>Community Forums:</strong> Engage with other users, share your experiences, ask questions, and find solutions from our community of experts and fellow customers.</li>
+                <li><strong>Contact Us:</strong> Need personalized assistance? Reach out to our dedicated support team through phone, email, or live chat. We're here to help!</li>
+            </ol>
+            <br/>
+            <strong>Stay Updated:</strong>
+            <p>Be sure to check our updates section for the latest news, product releases, and enhancements. We regularly update our Help Center to make sure you have access to the most accurate and up-to-date information.</p>
+            <br/>
+            <strong>Conclusion:</strong>
+            <p>We are here to assist you every step of the way, so don't hesitate to explore our Help Center or reach out if you need anything. Thank you for choosing [Your Company Name], and we look forward to supporting your journey to success!</p>
           </p>
         </div>
       </div>
