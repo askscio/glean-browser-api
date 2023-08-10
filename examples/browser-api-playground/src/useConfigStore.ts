@@ -1,12 +1,13 @@
 import { useCallback, useMemo, useState } from "react";
 import { ConfigType, baseOptionsKey, defaultConfig } from "./EmbedConfigContext";
+import _ from "lodash";
 
 const storeKey = "embedded-search-config";
 
 const useConfigStore = () => {
     const [config, setConfig] = useState<ConfigType>(() => {
         const value = window.sessionStorage.getItem(storeKey)
-        return value ? JSON.parse(value) : defaultConfig
+        return value ? _.merge(defaultConfig, JSON.parse(value)) : defaultConfig
     });
 
     const setPersistentConfig = useCallback((newValue: ConfigType) => setConfig((prevValue: ConfigType) => {
