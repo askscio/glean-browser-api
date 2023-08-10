@@ -1,12 +1,14 @@
 import { useCallback, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { EmbedConfigContext, baseOptionsKey, searchOptionsKey } from "../EmbedConfigContext";
+import { EmbedConfigContext, authTypeKey, baseOptionsKey, searchOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
+import useAuthProvider from "../useAuthProvider";
 
 const SearchResults = () => {
   const containerRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const {config} = useContext(EmbedConfigContext)
+  const authParams = useAuthProvider(config[authTypeKey], config[baseOptionsKey].backend)
   const navigate = useNavigate();
 
   const query = searchParams.get("query") ?? "";
@@ -44,6 +46,7 @@ const SearchResults = () => {
       onChat: handleChat,
       onSearch: handleSearch,
       ...searchResultsCustomConfig,
+      ...authParams,
       // Add overrides to the custom config here
     });
   }, [query, handleSearch, handleChat, config]);
