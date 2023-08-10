@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import SearchBox from "./SearchBox";
+import SearchBox from "../SearchBox";
 import { useState } from "react";
 import SettingsDrawer from "../SettingsDrawer";
 
