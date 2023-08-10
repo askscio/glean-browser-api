@@ -1,13 +1,14 @@
 {
-  "name": "search-chat-separate-routes",
+  "name": "browser-api-playground",
   "version": "1.0.0",
-  "description": "An example that shows Search and Chat as separate pages setup with Glean Browser API.",
+  "description": "A playground for QA to test Search and Chat as separate pages with Glean Browser API.",
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
     "loader-utils": "3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-json-view": "^1.21.3",
     "react-router": "6.9.0",
     "react-router-dom": "6.10.0",
     "react-scripts": "5.0.1",
