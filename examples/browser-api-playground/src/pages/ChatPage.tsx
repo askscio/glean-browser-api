@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { EmbedConfigContext, authTypeKey, baseOptionsKey } from "../EmbedConfigContext";
+import { EmbedConfigContext, authOptionsKey, baseOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
 import useAuthProvider from "../useAuthProvider";
 
@@ -8,7 +8,7 @@ const ChatPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const {config} = useContext(EmbedConfigContext)
-  const authParams = useAuthProvider(config[authTypeKey], config[baseOptionsKey].backend)
+  const authParams = useAuthProvider(config[authOptionsKey], config[baseOptionsKey].backend)
   const navigate = useNavigate()
 
   useEffect(() => {

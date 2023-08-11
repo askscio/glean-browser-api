@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { AuthType } from "./types";
+import { AuthOptions, AuthType } from "./types";
 
 interface AuthState {
   onAuthTokenRequired: () => void;
-  authToken?: string;
+  authToken?: any;
 }
 
 const defaultAuthState: AuthState = {
@@ -12,15 +12,15 @@ const defaultAuthState: AuthState = {
 
 const serverBasePath = (() => {
   const feBasePath = window.location.origin;
-  return feBasePath.replace(/-\d{4}\./, "-8585.");
+  return feBasePath.replace("3000", "8585");
 })();
 
 const fetchTokenFromServer = async (
   backend: string,
-  authType: AuthType.Anonymous | AuthType.ServerSide
+  authOptions: AuthOptions
 ): Promise<string> => {
   const endpoint =
-    authType == AuthType.Anonymous
+    authOptions.type == AuthType.Anonymous
       ? "generateAnonymousAuthToken"
       : "generateAuthToken";
   return await new Promise((resolve, reject) =>
@@ -29,15 +29,15 @@ const fetchTokenFromServer = async (
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ backend }),
+      body: JSON.stringify({ backend, actAs: authOptions.actAs }),
     })
       .then((response) => response.json())
-      .then((data) => resolve(data.token))
+      .then((data) => resolve(data))
       .catch((error) => reject(error))
   );
 };
 
-const useAuthProvider = (authType: AuthType, backend: string) => {
+const useAuthProvider = (authOptions: AuthOptions, backend: string) => {
   const [authState, setAuthState] = useState<AuthState>(defaultAuthState);
   const updateAuthToken = useCallback(
     (authToken: string) =>
@@ -51,14 +51,14 @@ const useAuthProvider = (authType: AuthType, backend: string) => {
   );
 
   useEffect(() => {
-    switch (authType) {
+    switch (authOptions.type) {
       case AuthType.ServerSide:
       case AuthType.Anonymous: {
         (async () => {
-          const authToken = await fetchTokenFromServer(backend, authType);
+          const authToken = await fetchTokenFromServer(backend, authOptions);
           setAuthState({
             onAuthTokenRequired: async () => {
-              const authToken = await fetchTokenFromServer(backend, authType);
+              const authToken = await fetchTokenFromServer(backend, authOptions);
               updateAuthToken(authToken);
             },
             authToken: authToken,
@@ -69,7 +69,7 @@ const useAuthProvider = (authType: AuthType, backend: string) => {
       case AuthType.Default:
         setAuthState(defaultAuthState);
     }
-  }, [backend, authType, updateAuthToken]);
+  }, [backend, authOptions, updateAuthToken]);
 
   return authState;
 };

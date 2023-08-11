@@ -21,6 +21,7 @@ const useConfigStore = () => {
         return newValue;
     }), [setConfig]);
 
+    window.setConfig = setPersistentConfig;
     return useMemo(() => ({config, setConfig: setPersistentConfig}), [config, setPersistentConfig]);
 }
 

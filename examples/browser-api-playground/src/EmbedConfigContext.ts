@@ -29,10 +29,13 @@ const boxOptions = {
 
 export const baseOptionsKey = 'Options';
 export const searchOptionsKey = 'Search Options';
-export const authTypeKey = 'Auth Type';
+export const authOptionsKey = 'Auth Options';
 
 export const defaultConfig = {
-    [authTypeKey]: AuthType.Default,
+    [authOptionsKey]: {
+        type: AuthType.Default,
+        actAs: undefined,
+    },
     [baseOptionsKey]: baseOptions,
     [searchOptionsKey]: searchOptons,
     [EmbeddedSearchWidget.SearchBox]: {
