@@ -1,12 +1,14 @@
 import { useContext, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { EmbedConfigContext, baseOptionsKey } from "../EmbedConfigContext";
+import { EmbedConfigContext, authTypeKey, baseOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
+import useAuthProvider from "../useAuthProvider";
 
 const ChatPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const {config} = useContext(EmbedConfigContext)
+  const authParams = useAuthProvider(config[authTypeKey], config[baseOptionsKey].backend)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -21,9 +23,10 @@ const ChatPage = () => {
       onChat: (chatId: string) => setSearchParams({ chatId }),
       onSearch: (query: string) => navigate({ pathname: '/search', search: new URLSearchParams({ query }).toString() }),
       ...chatCustomConfig,
+      ...authParams,
       // Add overrides to the custom config here
     });
-  }, [searchParams, setSearchParams, navigate, config]);
+  }, [searchParams, setSearchParams, navigate, config, authParams]);
 
   return (
     <div
