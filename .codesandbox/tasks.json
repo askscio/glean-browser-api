@@ -15,10 +15,18 @@
   "tasks": {
     "FE Server": {
       "name": "FE Server",
-      "command": "cd examples/browser-api-playground && yarn && yarn start",
+      "command": "cd examples/browser-api-playground && yarn && yarn start:client",
       "runAtStart": true,
       "preview": {
         "port": 3000
+      }
+    },
+    "BE Server": {
+      "name": "BE Server",
+      "command": "cd examples/browser-api-playground && yarn && yarn start:server",
+      "runAtStart": true,
+      "preview": {
+        "port": 8585
       }
     }
   }

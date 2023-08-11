@@ -4,8 +4,8 @@ const axios = require("axios");
 
 const app = express();
 const port = 8585;
-// TODO: Read token from environment variable
-const authorizationToken = "";
+// During local development, set the API_SECRET environment variable
+const authorizationToken = process.env.API_SECRET;
 
 app.use(express.json());
 app.use(cors());
@@ -21,7 +21,7 @@ app.post("/generateAuthToken", (req, res) => {
     headers: {
       Authorization: `Bearer ${authorizationToken}`,
       "X-Scio-Actas": actAs || "steve.smith@salessavvy.net",
-      "accept": "application/json",
+      accept: "application/json",
     },
   })
     .then((response) => res.json(response.data))
