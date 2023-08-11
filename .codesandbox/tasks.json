@@ -1,0 +1,25 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "name": "cd examples/browser-api-playground",
+      "command": "cd examples/browser-api-playground"
+    },
+    {
+      "name": "yarn install",
+      "command": "yarn install"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "FE Server": {
+      "name": "FE Server",
+      "command": "cd examples/browser-api-playground && yarn && yarn start",
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
+    }
+  }
+}

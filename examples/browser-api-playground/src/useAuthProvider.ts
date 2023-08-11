@@ -1,70 +1,77 @@
-import { EmbedConfigContext, authTypeKey, baseOptionsKey } from "./EmbedConfigContext";
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AuthType } from "./types";
 
 interface AuthState {
-    onAuthTokenRequired: () => void;
-    authToken?: string;
+  onAuthTokenRequired: () => void;
+  authToken?: string;
 }
 
 const defaultAuthState: AuthState = {
-    onAuthTokenRequired: () => {},
+  onAuthTokenRequired: () => {},
 };
 
-const fetchTokenFromServer = async ({backend}: {backend: string}): Promise<string> => {
-    return await new Promise((resolve, reject) => fetch('http://localhost:8585/generateAuthToken', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({backend}),
+const serverBasePath = (() => {
+  const feBasePath = window.location.origin;
+  return feBasePath.replace(/-\d{4}\./, "-8585.");
+})();
+
+const fetchTokenFromServer = async (
+  backend: string,
+  authType: AuthType.Anonymous | AuthType.ServerSide
+): Promise<string> => {
+  const endpoint =
+    authType == AuthType.Anonymous
+      ? "generateAnonymousAuthToken"
+      : "generateAuthToken";
+  return await new Promise((resolve, reject) =>
+    fetch(`${serverBasePath}/${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ backend }),
     })
-    .then(response => response.json())
-    .then(data => resolve(data.token))
-    .catch(error => reject(error)));
-}
+      .then((response) => response.json())
+      .then((data) => resolve(data.token))
+      .catch((error) => reject(error))
+  );
+};
 
 const useAuthProvider = (authType: AuthType, backend: string) => {
-    const [authState, setAuthState] = useState<AuthState>(defaultAuthState)
-    const updateAuthToken = useCallback((authToken: string) => setAuthState((prevAuthState: AuthState) => {
+  const [authState, setAuthState] = useState<AuthState>(defaultAuthState);
+  const updateAuthToken = useCallback(
+    (authToken: string) =>
+      setAuthState((prevAuthState: AuthState) => {
         return {
-            ...prevAuthState,
-            authToken,
+          ...prevAuthState,
+          authToken,
         };
-    }), [setAuthState]);
+      }),
+    [setAuthState]
+  );
 
-    useEffect(() => {
-        switch (authType) {
-            case AuthType.ServerSide:
-                (async () => {
-                    const authToken = await fetchTokenFromServer({backend});
-                    setAuthState({
-                        onAuthTokenRequired: async () => {
-                            const authToken = await fetchTokenFromServer({backend});
-                            updateAuthToken(authToken);
-                        },
-                        authToken: authToken,
-                    });
-                })();
-            case AuthType.Anonymous: {
-                (async () => {
-                    const authProvider = window.EmbeddedSearch.createGuestAuthProvider({backend})
-                    const authToken = await authProvider.getAuthToken();
-                    setAuthState({
-                        onAuthTokenRequired: async () => {
-                            const authToken = await authProvider.createAuthToken();
-                            updateAuthToken(authToken);
-                        },
-                        authToken: authToken,
-                    });
-                })();
-            }
-            case AuthType.Default:
-                setAuthState(defaultAuthState);
-        }
-    }, [backend, authType, updateAuthToken]);
+  useEffect(() => {
+    switch (authType) {
+      case AuthType.ServerSide:
+      case AuthType.Anonymous: {
+        (async () => {
+          const authToken = await fetchTokenFromServer(backend, authType);
+          setAuthState({
+            onAuthTokenRequired: async () => {
+              const authToken = await fetchTokenFromServer(backend, authType);
+              updateAuthToken(authToken);
+            },
+            authToken: authToken,
+          });
+        })();
+        break;
+      }
+      case AuthType.Default:
+        setAuthState(defaultAuthState);
+    }
+  }, [backend, authType, updateAuthToken]);
 
-    return authState;
-}
+  return authState;
+};
 
 export default useAuthProvider;
