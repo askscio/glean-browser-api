@@ -24,6 +24,7 @@ const SettingsDrawer = ({open, onClose}: SettingsDrawerProps) => {
         <ReactJsonView 
             name="Configurable Props" 
             collapsed={1} 
+            defaultValue={undefined}
             displayDataTypes 
             displayObjectSize={false} 
             onAdd={handleJsonUpdate}

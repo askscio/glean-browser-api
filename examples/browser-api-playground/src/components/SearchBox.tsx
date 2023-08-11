@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { EmbedConfigContext, EmbeddedSearchWidget, baseOptionsKey, searchOptionsKey } from "../../EmbedConfigContext";
+import { EmbedConfigContext, baseOptionsKey, searchOptionsKey } from "../EmbedConfigContext";
+import { EmbeddedSearchWidget } from "../types";
 
 const SearchBox = () => {
   const containerRef = useRef(null);

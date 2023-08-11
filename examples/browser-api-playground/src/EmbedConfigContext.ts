@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { AuthType, EmbeddedSearchWidget } from "./types";
 
 const baseOptions = {
     authToken: undefined,
@@ -28,14 +29,10 @@ const boxOptions = {
 
 export const baseOptionsKey = 'Options';
 export const searchOptionsKey = 'Search Options';
-
-export const enum EmbeddedSearchWidget {
-    SearchBox = 'Search Box',
-    SearchResults = 'Search Results',
-    Chat = 'Chat',
-}
+export const authTypeKey = 'Auth Type';
 
 export const defaultConfig = {
+    [authTypeKey]: AuthType.Default,
     [baseOptionsKey]: baseOptions,
     [searchOptionsKey]: searchOptons,
     [EmbeddedSearchWidget.SearchBox]: {

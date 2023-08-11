@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { EmbedConfigContext, EmbeddedSearchWidget, baseOptionsKey } from "../EmbedConfigContext";
+import { EmbedConfigContext, baseOptionsKey } from "../EmbedConfigContext";
+import { EmbeddedSearchWidget } from "../types";
 
 const ChatPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
