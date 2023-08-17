@@ -3,7 +3,7 @@ import { AuthType, EmbeddedSearchWidget } from "./types";
 
 const baseOptions = {
     authToken: undefined,
-    backend: 'https://salessavvy-test-be.glean.com',
+    backend: undefined,
     disableAnalytics: false,
     domainsToOpenInCurrentTab: [],
     urlsToOpenInCurrentTab: [],

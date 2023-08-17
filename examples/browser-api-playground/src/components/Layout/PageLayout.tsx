@@ -1,4 +1,4 @@
-import { PropsWithChildren, useMemo, useState } from "react";
+import { PropsWithChildren } from "react";
 import Header from "./Header";
 import { EmbedConfigContext } from "../../EmbedConfigContext";
 import useConfigStore from "../../useConfigStore";

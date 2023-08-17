@@ -37,7 +37,7 @@ const fetchTokenFromServer = async (
   );
 };
 
-const useAuthProvider = (authOptions: AuthOptions, backend: string) => {
+const useAuthProvider = (authOptions: AuthOptions, backend?: string) => {
   const [authState, setAuthState] = useState<AuthState>(defaultAuthState);
   const updateAuthToken = useCallback(
     (authToken: string) =>
@@ -51,6 +51,10 @@ const useAuthProvider = (authOptions: AuthOptions, backend: string) => {
   );
 
   useEffect(() => {
+    if (!backend) {
+      setAuthState(defaultAuthState)
+      return
+    }
     switch (authOptions.type) {
       case AuthType.ServerSide:
       case AuthType.Anonymous: {
