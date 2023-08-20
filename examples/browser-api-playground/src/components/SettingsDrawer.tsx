@@ -34,13 +34,13 @@ const SettingsDrawer = ({open, onClose}: SettingsDrawerProps) => {
 
     return (
     <Drawer 
-        title={<>
+        title={<div style={{display: 'inline-flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
                 Settings{' '}
-                <div style={{display: 'inline-flex', columnGap: '20px', marginRight: 30, float: 'right'}}>
+                <div style={{display: 'inline-flex', columnGap: '20px', marginRight: 30}}>
                     <Tooltip title="Reset to default" placement="top"><ReloadOutlined onClick={handleReset}/></Tooltip>
                     <Tooltip title="Copy as JSON" placement="top"><CopyOutlined onClick={handleCopy}/></Tooltip>
                 </div>
-            </>} 
+            </div>} 
         mask={false} 
         placement="right" 
         onClose={onClose} 
