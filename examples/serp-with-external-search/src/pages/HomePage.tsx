@@ -9,7 +9,8 @@ const HomePage = () => (
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             Welcome
           </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+          {[...new Array(100)].map(e => (
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -20,6 +21,7 @@ const HomePage = () => (
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </p>
+          ))}
         </div>
       </div>
     </section>

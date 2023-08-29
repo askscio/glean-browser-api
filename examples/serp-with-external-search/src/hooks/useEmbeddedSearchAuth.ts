@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
  */
 const useEmbeddedSearchAuth = (isGuestUser = true) => {
 
-  const backend = 'https://YOUR_DOMAIN-be.glean.com/'
+  const backend = 'https://<CHANGEME>-external-be.glean.com/' // CHANGEME
 
   const guestAuthProvider = useMemo(
     () => window.EmbeddedSearch.createGuestAuthProvider({ backend }),

@@ -1,0 +1,1 @@
+export const mergeQueryParams = (current: URLSearchParams, next: Record<string, string>) => new URLSearchParams({ ...Object.fromEntries(current), ...next })

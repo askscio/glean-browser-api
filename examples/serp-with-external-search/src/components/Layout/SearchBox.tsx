@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useEmbeddedSearchAuth from "../../hooks/useEmbeddedSearchAuth";
+import { mergeQueryParams } from "../../utils/queryParams";
 
 const SearchBox = () => {
   const containerRef = useRef(null);
@@ -17,7 +18,7 @@ const SearchBox = () => {
     (query: string) =>
       navigate({
         pathname: "/search",
-        search: new URLSearchParams({ query }).toString(),
+        search: mergeQueryParams(new URLSearchParams(location.search), { query }).toString(),
       }),
     [navigate]
   );

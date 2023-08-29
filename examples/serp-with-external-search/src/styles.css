@@ -8,3 +8,11 @@ body,
   font-family: sans-serif;
   text-align: center;
 }
+
+.is-sticky {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}

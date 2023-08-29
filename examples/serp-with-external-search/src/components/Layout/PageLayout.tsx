@@ -3,14 +3,16 @@ import Header from "./Header";
 
 const PageLayout = ({ children }: PropsWithChildren) => (
   <div className="w-full h-full flex flex-col items-center">
-    <div className="w-fixed w-full flex-shrink flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md">
-      <div className="sticky top-0 p-4 w-full h-full z-50">
-        <Header />
-      </div>
-    </div>
-    <main role="main" className="w-full flex-auto">
+    <Header />
+    <main role="main" className="w-full flex-auto pt-4">
       {children}
     </main>
+    <div className="fixed flex items-center text-white justify-center bottom-[0px] w-full h-12 bg-slate-600 opacity-90 text-center">
+      Contact Support
+    </div>
+    <div style={{ height: '900px', marginTop: '24px', width: '100%', background: '#efefef', display: 'flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 auto' }}>
+      Footer content
+    </div>
   </div>
 );
 

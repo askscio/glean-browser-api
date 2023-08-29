@@ -1,19 +1,61 @@
-import { useCallback, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useEmbeddedSearchAuth from "../hooks/useEmbeddedSearchAuth";
+import { mergeQueryParams } from "../utils/queryParams";
+
+/**
+ * Get available height to the end of the viewport
+ */
+ const useAvailableViewportHeight = (
+  containerRef: RefObject<HTMLDivElement>,
+  gutterSize = 10,
+  minHeight = 600
+) => {
+  const [height, setHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    // Note: Should wrap with a debounce / throttle
+    const refreshHeight = () => {
+      if (!containerRef.current) return;
+
+      // Find available height to the end of the viewport
+      setHeight(
+        Math.max(
+          minHeight,
+          window.innerHeight - containerRef.current.offsetTop - gutterSize
+        )
+      );
+    };
+
+    refreshHeight();
+
+    window.addEventListener("resize", refreshHeight);
+    return () => window.removeEventListener("resize", refreshHeight);
+  }, [containerRef, gutterSize, minHeight]);
+
+  return height;
+};
+
 
 const SearchResults = () => {
   const containerRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const { authToken, backend, refreshAuthToken } = useEmbeddedSearchAuth()
+  const availableViewportHeight = useAvailableViewportHeight(containerRef)
 
   const query = searchParams.get("query") ?? "";
+  const datasource = searchParams.get("ds") ?? "";
 
   /**
    * Updates query params with the updated `query`
    */
   const handleSearch = useCallback(
-    (query: string) => setSearchParams({ query }),
+    (query: string) => setSearchParams(current => mergeQueryParams(current, { query })),
+    [setSearchParams]
+  );
+
+  const handleDSChange = useCallback(
+    (ds: string) => setSearchParams(current => mergeQueryParams(current, { ds })),
     [setSearchParams]
   );
 
@@ -28,19 +70,22 @@ const SearchResults = () => {
       query,
       onAuthTokenRequired: refreshAuthToken,
       onSearch: handleSearch,
+      hideDatasourceFilterSelector: true,
+      loadingPattern: 'load-more',
     });
-  }, [handleSearch, query, authToken, backend, refreshAuthToken]);
+  }, [handleSearch, handleDSChange, query, authToken, backend, refreshAuthToken]);
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        height: "100%",
-        width: "100%",
-        position: "relative",
-        paddingTop: "24px",
-      }}
-    />
+    <>
+      <div
+        ref={containerRef}
+        style={{
+          height: 'auto',
+          width: "100%",
+          position: "relative",
+        }}
+      />
+    </>
   );
 };
 

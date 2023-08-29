@@ -23,7 +23,5 @@ function App() {
 const rootElement = document.getElementById("root") as HTMLElement;
 
 createRoot(rootElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 );
