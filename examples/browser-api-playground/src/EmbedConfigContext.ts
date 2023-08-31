@@ -1,6 +1,8 @@
 import { createContext } from "react";
 import { AuthType, EmbeddedSearchWidget } from "./types";
 
+const makeValuesUndefined = (obj: Object) => Object.fromEntries(Object.entries(obj).map(([key]) => ([key])))
+
 const baseOptions = {
     authToken: undefined,
     backend: undefined,
@@ -11,7 +13,7 @@ const baseOptions = {
     locale: undefined,
     themeVariant: 'auto',
     theme: {},
-    webAppUrl: "https://canary.glean.com"
+    webAppUrl: undefined
 }
 
 const searchOptons = {
@@ -55,10 +57,8 @@ export const defaultConfig = {
         showInlineSearchBox: false,
     },
     [EmbeddedSearchWidget.Chat]: {
-        customizations: {
-            container: boxOptions,
-        },
-        initialMessage: "Who can I ask about Embedded Search", 
+        customizations: { container: makeValuesUndefined(boxOptions) },
+        initialMessage: undefined,
     },
 }
 
