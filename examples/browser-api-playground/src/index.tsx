@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageLayout from "./components/Layout/PageLayout";
 import ChatPage from "./pages/ChatPage";
 import HomePage from "./pages/HomePage";
+import ModalSearch from "./pages/ModalSearch";
 import SearchResultsPage from "./pages/SearchResultsPage";
 
 import "./styles.css";
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/search" element={<SearchResultsPage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/modal-search" element={<ModalSearch />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </PageLayout>

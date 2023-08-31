@@ -1,5 +1,6 @@
 import { useCallback, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import SearchBox from "../components/SearchBox";
 import { EmbedConfigContext, authOptionsKey, baseOptionsKey, searchOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
 import useAuthProvider from "../useAuthProvider";
@@ -52,15 +53,20 @@ const SearchResults = () => {
   }, [query, handleSearch, handleChat, config, authParams]);
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        height: "100%",
-        width: "100%",
-        position: "relative",
-        paddingTop: "24px",
-      }}
-    />
+    <div className="h-full">
+      <div className="pt-8 max-w-screen-xl m-auto">
+        <SearchBox />
+      </div>
+      <div
+        ref={containerRef}
+        style={{
+          height: "100%",
+          width: "100%",
+          position: "relative",
+          paddingTop: "24px",
+        }}
+      />
+    </div>
   );
 };
 

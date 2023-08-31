@@ -14,6 +14,7 @@ const NativeSearchBox = () => {
       ...config[baseOptionsKey],
       ...config[searchOptionsKey],
     }
+
     window.EmbeddedSearch.attach(containerRef.current, {
       ...NativeSearchBoxCustomConfig,
       ...authParams,

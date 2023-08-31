@@ -60,7 +60,7 @@ const SearchBox = () => {
       ref={containerRef}
       style={{
         height: "48px",
-        width: "600px",
+        width: "100%",
         position: "relative", // This is required
         zIndex: 2, // Should be higher than other elements below
       }}
