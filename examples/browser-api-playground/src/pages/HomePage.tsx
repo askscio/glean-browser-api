@@ -15,7 +15,8 @@ const HomePage = () => (
             </div>
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            <p>Navigate to each page matching a supported integration type and utilize the sidebar settings drawer to edit options directly.</p>
+            <p>Navigate to each page matching a supported integration type.</p>
+            <p>Utilize the sidebar settings drawer to edit options directly.</p>
           </p>
         </div>
       </div>
