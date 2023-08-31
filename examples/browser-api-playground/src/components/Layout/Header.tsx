@@ -22,18 +22,6 @@ const items: MenuProps['items'] = [
   },
 ];
 
-const App: React.FC = () => {
-  const [current, setCurrent] = useState('mail');
-
-  const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e);
-    setCurrent(e.key);
-  };
-
-  return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
-};
-
-
 const Header = () => {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const { pathname } = useLocation()

@@ -9,7 +9,7 @@ const PageLayout = ({ children }: PropsWithChildren) => {
   const contextValue = useConfigStore()
 
   return <EmbedConfigContext.Provider value={contextValue}>
-    <Layout className="h-full">
+    <Layout className="h-full w-full">
       <Header />
       <Content role="main" className="w-full flex-auto bg-white">
         {children}
