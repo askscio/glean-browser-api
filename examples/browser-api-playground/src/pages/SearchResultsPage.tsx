@@ -54,7 +54,7 @@ const SearchResults = () => {
 
   return (
     <div className="h-full">
-      <div className="pt-8 max-w-screen-xl m-auto">
+      <div className="p-8 max-w-screen-xl m-auto">
         <SearchBox />
       </div>
       <div

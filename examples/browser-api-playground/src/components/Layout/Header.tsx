@@ -30,14 +30,15 @@ const Header = () => {
   const onClick: MenuProps['onClick'] = (e) => navigate(e.key);
 
   return (
-    <Layout.Header className="bg-white w-full flex items-center flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md">
+    <Layout.Header className="bg-white flex items-center flex-grow-0 px-0 w-fixed flex-shrink flex-grow-0 border-b border-gray-20 shadow-md">
       <Menu
         mode="horizontal"
         defaultSelectedKeys={[pathname]}
         items={items}
         onClick={onClick}
+        className="max-w-[100%]"
       />
-      <button onClick={() => setSettingsOpen(true)} className="ml-auto">
+      <button onClick={() => setSettingsOpen(true)} className="ml-auto mr-8">
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
           width="24" 
