@@ -11,7 +11,7 @@ const baseOptions = {
     urlsToOpenInCurrentTab: [],
     enableActivityLogging: true,
     locale: undefined,
-    themeVariant: 'auto',
+    themeVariant: 'light',
     theme: {},
     webAppUrl: undefined
 }
