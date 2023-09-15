@@ -36,6 +36,7 @@ const Header = () => {
         defaultSelectedKeys={[pathname]}
         items={items}
         onClick={onClick}
+        style={{width: '100%'}}
       />
       <button onClick={() => setSettingsOpen(true)} className="ml-auto">
         <svg 
