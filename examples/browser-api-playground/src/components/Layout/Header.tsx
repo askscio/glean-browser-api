@@ -33,7 +33,7 @@ const Header = () => {
     <Layout.Header className="bg-white w-full flex items-center flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md">
       <Menu
         mode="horizontal"
-        defaultSelectedKeys={[pathname]}
+        selectedKeys={[pathname]}
         items={items}
         onClick={onClick}
         style={{width: '100%'}}
