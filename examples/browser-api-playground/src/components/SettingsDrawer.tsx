@@ -27,7 +27,7 @@ const SettingsDrawer = ({ open, onClose }: SettingsDrawerProps) => {
     setDraftConfig(config);
   }, [config]);
 
-  const handleReset = useCallback(() => setConfig(defaultConfig), [config]);
+  const handleReset = useCallback(() => setConfig(defaultConfig), []);
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(JSON.stringify(draftConfig, null, 2));
     message.success("Copied to clipboard");

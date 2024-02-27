@@ -7,7 +7,7 @@ const storeKey = "embedded-search-config";
 const useConfigStore = () => {
     const [config, setConfig] = useState<ConfigType>(() => {
         const value = window.sessionStorage.getItem(storeKey)
-        return value ? merge(defaultConfig, JSON.parse(value)) : defaultConfig
+        return value ? merge({}, defaultConfig, JSON.parse(value)) : defaultConfig
     });
 
     const setPersistentConfig = useCallback((newValue: ConfigType) => setConfig((prevValue: ConfigType) => {
