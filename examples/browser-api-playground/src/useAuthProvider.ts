@@ -2,12 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { AuthOptions, AuthType } from "./types";
 
 interface AuthState {
-  onAuthTokenRequired: () => void;
+  onAuthTokenRequired?: () => void;
   authToken?: any;
 }
 
 const defaultAuthState: AuthState = {
-  onAuthTokenRequired: () => {},
 };
 
 const serverBasePath = (() => {
