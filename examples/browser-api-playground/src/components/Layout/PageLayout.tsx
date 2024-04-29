@@ -11,16 +11,17 @@ const PageLayout = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     try {
-      if (!contextValue.config?.[sdkOptionsKey]?.source) {
+      const sdkSource = contextValue.config?.[sdkOptionsKey]?.source
+      if (!sdkSource) {
         throw new Error('No source URL provided')
-      } else {
-        const script = document.createElement('script')
-        script.src = contextValue.config[sdkOptionsKey].source
-        script.onload = () => {
-          setReady(true)
-        }
-        document.head.appendChild(script)
       }
+
+      const script = document.createElement('script')
+      script.src = sdkSource
+      script.onload = () => {
+        setReady(true)
+      }
+      document.head.appendChild(script)
     } catch (e) {
       alert('Please provide a source URL in the "SDK Options" section of the config')
     }
