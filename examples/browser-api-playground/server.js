@@ -4,23 +4,21 @@ const axios = require("axios");
 
 const app = express();
 const port = 8585;
-// During local development, set the API_SECRET environment variable
-const authorizationToken = process.env.API_SECRET;
 
 app.use(express.json());
 app.use(cors());
 
 app.post("/generateAuthToken", (req, res) => {
   // Extract the backend and user from the request
-  const { backend, actAs } = req.body;
+  const { backend, actAs, apiKey } = req.body;
 
   // Call the Glean server's createauthtoken endpoint
   axios({
     method: "POST",
     url: `${backend}/rest/api/v1/createauthtoken`,
     headers: {
-      Authorization: `Bearer ${authorizationToken}`,
-      "X-Scio-Actas": actAs || "steve.smith@salessavvy.net",
+      Authorization: `Bearer ${apiKey}`,
+      "X-Scio-Actas": actAs,
       accept: "application/json",
     },
   })
@@ -36,10 +34,6 @@ app.post("/generateAnonymousAuthToken", (req, res) => {
   axios({
     method: "post",
     url: `${backend}/api/v1/createanonymoustoken`,
-    headers: {
-      Authorization: `Bearer ${authorizationToken}`,
-      "X-Scio-Actas": actAs,
-    },
   })
     .then((response) => res.json(response.data))
     .catch((error) => res.status(500).json({ error: error.message }));
