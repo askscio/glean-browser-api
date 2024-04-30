@@ -28,7 +28,11 @@ const fetchTokenFromServer = async (
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ backend, actAs: authOptions.actAs }),
+      body: JSON.stringify({ 
+        backend, 
+        actAs: authOptions.actAs, 
+        apiKey: authOptions.apiKey,
+      }),
     })
       .then((response) => response.json())
       .then((data) => resolve(data))

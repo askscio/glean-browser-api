@@ -37,6 +37,7 @@ export const defaultConfig = {
     [authOptionsKey]: {
         type: AuthType.Default,
         actAs: undefined,
+        apiKey: undefined,
     },
     [baseOptionsKey]: baseOptions,
     [searchOptionsKey]: searchOptons,

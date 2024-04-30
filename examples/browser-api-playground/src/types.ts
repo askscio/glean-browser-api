@@ -7,6 +7,7 @@ export const enum AuthType {
 export interface AuthOptions {
     type: AuthType;
     actAs?: string;
+    apiKey?: string;
 }
   
 export const enum EmbeddedSearchWidget {
