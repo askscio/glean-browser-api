@@ -32,8 +32,12 @@ const boxOptions = {
 export const baseOptionsKey = 'Options';
 export const searchOptionsKey = 'Search Options';
 export const authOptionsKey = 'Auth Options';
+export const sdkOptionsKey = 'SDK Options';
 
 export const defaultConfig = {
+    [sdkOptionsKey]: {
+        source: "https://canary.glean.com/embedded-search-latest.min.js"
+    },
     [authOptionsKey]: {
         type: AuthType.Default,
         actAs: undefined,
