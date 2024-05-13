@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthOptions, AuthType } from "./types";
+import { EmbedConfigContext, authOptionsKey, baseOptionsKey } from "./EmbedConfigContext";
 
 interface AuthState {
   onAuthTokenRequired?: () => void;
@@ -40,16 +41,30 @@ const fetchTokenFromServer = async (
   );
 };
 
-const useAuthProvider = (authOptions: AuthOptions, backend?: string) => {
-  const [authState, setAuthState] = useState<AuthState>(defaultAuthState);
+const useAuthProvider = () => {
+  const { config } = useContext(EmbedConfigContext)
+  const authOptions = config[authOptionsKey]
+  const { backend, authMethod}  = config[baseOptionsKey]
+
+  const [authState, setAuthState] = useState<AuthState>(() => {
+    /**
+     * Add onAuthTokenRequired if authMethod = token as QA automation uses window.config 
+     * to set the config value and functions are omitted in JSON.stringify which we do
+     * before storing in session/local storage
+     */
+    if (authMethod === 'token') {
+      config[baseOptionsKey].onAuthTokenRequired = () => {}
+    }
+    return defaultAuthState
+  });
   const updateAuthToken = useCallback(
-    (authToken: string) =>
+    (authToken: string) => {
       setAuthState((prevAuthState: AuthState) => {
         return {
           ...prevAuthState,
           authToken,
         };
-      }),
+      })},
     [setAuthState]
   );
 

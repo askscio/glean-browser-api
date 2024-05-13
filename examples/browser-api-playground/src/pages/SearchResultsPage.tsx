@@ -9,7 +9,7 @@ const SearchResults = () => {
   const containerRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const {config} = useContext(EmbedConfigContext)
-  const authParams = useAuthProvider(config[authOptionsKey], config[baseOptionsKey].backend)
+  const authParams = useAuthProvider()
   const navigate = useNavigate();
 
   const query = searchParams.get("query") ?? "";

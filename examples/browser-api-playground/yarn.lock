@@ -1457,6 +1457,11 @@
   resolved "https://registry.npmjs.org/@eslint/js/-/js-8.46.0.tgz"
   integrity sha512-a8TLtmPi8xzPkCbp/OGFUo5yhRkHM2Ko9kOWP4znJr0WAhWyThaw3PnwX4vOTWOAMsV2uRt32PPDcEz63esSaA==
 
+"@gleanwork/web-sdk@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@gleanwork/web-sdk/-/web-sdk-1.0.1.tgz#7ee006de9cf0ffcbca3014f826ce728166c0ee76"
+  integrity sha512-iuCIZQfjUQRL9VBUlDrZhTe5K9x8hmfWFMaUW/ByBWRwAT1u+SKCAGwkhu2/N4egC7VvsFgQcXExh/QpU+o17A==
+
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.10.tgz"

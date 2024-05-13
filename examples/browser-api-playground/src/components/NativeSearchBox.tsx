@@ -5,7 +5,7 @@ import useAuthProvider from "../useAuthProvider";
 const NativeSearchBox = () => {
   const containerRef = useRef(null);
   const {config} = useContext(EmbedConfigContext)
-  const authParams = useAuthProvider(config[authOptionsKey], config[baseOptionsKey].backend)
+  const authParams = useAuthProvider()
 
   useEffect(() => {
     if (!window.EmbeddedSearch) return;

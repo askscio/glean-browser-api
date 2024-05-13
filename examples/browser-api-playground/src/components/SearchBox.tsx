@@ -9,7 +9,7 @@ const SearchBox = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const {config} = useContext(EmbedConfigContext)
-  const authParams = useAuthProvider(config[authOptionsKey], config[baseOptionsKey].backend)
+  const authParams = useAuthProvider()
 
   const query = searchParams.get("query") ?? "";
 
@@ -45,12 +45,15 @@ const SearchBox = () => {
       ...config[searchOptionsKey],
       ...config[EmbeddedSearchWidget.SearchBox]
     }
+
+    console.log('Search Box', authParams, searchBoxCustomConfig)
+
     window.EmbeddedSearch.renderSearchBox(containerRef.current, {
       onSearch: handleSearch,
       onChat: handleChat,
       query,
-      ...searchBoxCustomConfig,
       ...authParams,
+      ...searchBoxCustomConfig,
       // Add overrides to the custom config here
     });
   }, [handleChat, handleSearch, query, config, authParams]);
