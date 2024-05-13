@@ -46,14 +46,12 @@ const SearchBox = () => {
       ...config[EmbeddedSearchWidget.SearchBox]
     }
 
-    console.log('Search Box', authParams, searchBoxCustomConfig)
-
     window.EmbeddedSearch.renderSearchBox(containerRef.current, {
       onSearch: handleSearch,
       onChat: handleChat,
       query,
-      ...authParams,
       ...searchBoxCustomConfig,
+      ...authParams,
       // Add overrides to the custom config here
     });
   }, [handleChat, handleSearch, query, config, authParams]);
