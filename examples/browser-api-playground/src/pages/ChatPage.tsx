@@ -8,7 +8,7 @@ const ChatPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const {config} = useContext(EmbedConfigContext)
-  const authParams = useAuthProvider(config[authOptionsKey], config[baseOptionsKey].backend)
+  const authParams = useAuthProvider()
   const navigate = useNavigate()
 
   useEffect(() => {

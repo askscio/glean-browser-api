@@ -1,3 +1,5 @@
+import type { Options } from '@gleanwork/web-sdk'
+
 export const enum AuthType {
     Default = 'default',
     ServerSide = 'server-side',
@@ -15,3 +17,6 @@ export const enum EmbeddedSearchWidget {
     SearchResults = 'Search Results',
     Chat = 'Chat',
 } 
+
+// TODO: Remove authMethod when types package is updated
+export type BaseOptions = Options & { authMethod?: 'sso' | 'token'}
