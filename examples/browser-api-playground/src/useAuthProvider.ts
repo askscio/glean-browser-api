@@ -53,7 +53,7 @@ const useAuthProvider = () => {
      * before storing in session/local storage
      */
     if (authMethod === 'token') {
-      config[baseOptionsKey].onAuthTokenRequired = () => {}
+      defaultAuthState.onAuthTokenRequired = () => {}
     }
     return defaultAuthState
   });

@@ -24,16 +24,18 @@ const shouldReload = (prevValue: ConfigType, newValue: ConfigType) => {
 const useConfigStore = () => {
     const [config, setConfig] = useState<ConfigType>(() => {
         const value = window.sessionStorage.getItem(storeKey)
-        return value ? merge({}, defaultConfig, JSON.parse(value)) : defaultConfig
+        if (!value) return defaultConfig
+        return JSON.parse(value)
     });
 
     const setPersistentConfig = useCallback((newValue: ConfigType) => setConfig((prevValue: ConfigType) => {
-        window.sessionStorage.setItem(storeKey, JSON.stringify(newValue));
+        const updatedConfig = merge({}, config, newValue)
+        window.sessionStorage.setItem(storeKey, JSON.stringify(updatedConfig));
         // Reload page if backend URL or webAppUrl changes
-        if (shouldReload(prevValue, newValue)) {
+        if (shouldReload(prevValue, updatedConfig)) {
             window.location.reload();
         }
-        return newValue;
+        return updatedConfig;
     }), [setConfig]);
 
     window.setConfig = setPersistentConfig;

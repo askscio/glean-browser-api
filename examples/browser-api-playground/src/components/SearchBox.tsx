@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { EmbedConfigContext, authOptionsKey, baseOptionsKey, searchOptionsKey } from "../EmbedConfigContext";
+import { EmbedConfigContext, baseOptionsKey, searchOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
 import useAuthProvider from "../useAuthProvider";
 
