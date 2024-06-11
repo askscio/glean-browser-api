@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { createRoot } from "react-dom/client";
-import { Divider, Input, Select, Typography } from "antd";
+import { Typography } from "antd";
 import { useEffect, useState } from "react";
 import type { EmbeddedSearch } from "@gleanwork/web-sdk";
 
