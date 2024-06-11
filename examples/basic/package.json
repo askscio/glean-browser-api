@@ -1,7 +1,7 @@
 {
-  "name": "browser-api-playground",
+  "name": "basic_setup_example",
   "version": "1.0.0",
-  "description": "A playground for QA to test Search and Chat as separate pages with Glean Browser API.",
+  "description": "A basic example of how to setup glean with the embedded script.",
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
