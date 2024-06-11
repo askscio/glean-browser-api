@@ -28,7 +28,7 @@ function App() {
     });
   }, [isGleanReady]);
 
-  // load glean script and wait for glean to be ready
+  // load glean script and mark glean as ready once its loaded
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://app.glean.com/embedded-search-latest.min.js";
