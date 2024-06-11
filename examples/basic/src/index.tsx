@@ -18,10 +18,9 @@ function App() {
 
   // initialize glean
   useEffect(() => {
-    if (!isGleanReady || !window.EmbeddedSearch || !containerRef.current)
-      return;
+    if (!isGleanReady || !containerRef.current) return;
 
-    window.EmbeddedSearch.attach(containerRef.current, {
+    window.EmbeddedSearch?.attach(containerRef.current, {
       onSearch(query) {
         console.log(query);
       },
