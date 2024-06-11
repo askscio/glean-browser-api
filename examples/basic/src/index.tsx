@@ -16,6 +16,7 @@ function App() {
   const containerRef = useRef(null);
   const [isGleanReady, setIsGleanReady] = useState(false);
 
+  // initialize glean
   useEffect(() => {
     if (!isGleanReady || !window.EmbeddedSearch || !containerRef.current)
       return;
@@ -27,6 +28,7 @@ function App() {
     });
   }, [isGleanReady]);
 
+  // load glean script and wait for glean to be ready
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://app.glean.com/embedded-search-latest.min.js";
