@@ -12,7 +12,7 @@ const shouldReload = (prevValue: ConfigType, newValue: ConfigType) => {
         }
     }
 
-    const sdkOptionReloadKeys = ['source'] as const;
+    const sdkOptionReloadKeys = ['source', 'integrity'] as const;
     for (const key of sdkOptionReloadKeys) {
         if (prevValue[sdkOptionsKey][key] !== newValue[sdkOptionsKey][key]) {
             return true

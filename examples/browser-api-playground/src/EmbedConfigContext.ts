@@ -36,7 +36,8 @@ export const sdkOptionsKey = 'SDK Options';
 
 export const defaultConfig = {
     [sdkOptionsKey]: {
-        source: "https://canary.glean.com/embedded-search-latest.min.js"
+        source: "https://canary.glean.com/embedded-search-latest.min.js",
+        integrity: ""
     },
     [authOptionsKey]: {
         type: AuthType.Default,
