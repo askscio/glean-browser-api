@@ -15,9 +15,13 @@ const PageLayout = ({ children }: PropsWithChildren) => {
       if (!sdkSource) {
         throw new Error('No source URL provided')
       }
+      const sdkIntegrity = contextValue.config?.[sdkOptionsKey]?.integrity
 
       const script = document.createElement('script')
       script.src = sdkSource
+      if (sdkIntegrity) {
+        script.integrity = sdkIntegrity
+      }
       script.onload = () => {
         setReady(true)
       }
