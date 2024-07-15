@@ -1,0 +1,42 @@
+{
+  "name": "basic_setup_example",
+  "version": "1.0.0",
+  "description": "A basic example of how to setup glean with the embedded script.",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@ant-design/icons": "^5.2.5",
+    "antd": "^5.8.2",
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "loadash": "^1.0.0",
+    "loader-utils": "3.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-json-view": "^1.21.3",
+    "react-router": "6.9.0",
+    "react-router-dom": "6.10.0",
+    "react-scripts": "5.0.1",
+    "react-virtualized-auto-sizer": "1.0.9"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/lodash": "^4.14.197",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@gleanwork/web-sdk": "^1.0.0",
+    "typescript": "4.4.2"
+  },
+  "scripts": {
+    "start:client": "yarn build && node webserver.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
