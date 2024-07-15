@@ -20,7 +20,9 @@ const PageLayout = ({ children }: PropsWithChildren) => {
       const script = document.createElement('script')
       script.src = sdkSource
       if (sdkIntegrity) {
+        // https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
         script.integrity = sdkIntegrity
+        script.setAttribute('crossorigin', 'anonymous')
       }
       script.onload = () => {
         setReady(true)
