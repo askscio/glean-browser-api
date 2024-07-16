@@ -16,7 +16,7 @@ const PageLayout = ({ children }: PropsWithChildren) => {
       if (!sdkSource) {
         throw new Error('No source URL provided')
       }
-      if (sdkSource === "GleanWebSDK") {
+      if (sdkSource.toLowerCase() === "npm") {
         window.GleanWebSDK = GleanWebSDK
         setReady(true)
       } else {
