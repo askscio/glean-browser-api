@@ -1,9 +1,11 @@
 import { createContext } from "react";
-import { AuthType, EmbeddedSearchWidget } from "./types";
+import { AuthType, BaseOptions, EmbeddedSearchWidget } from "./types";
 
 const makeValuesUndefined = (obj: Object) => Object.fromEntries(Object.entries(obj).map(([key]) => ([key])))
 
-const baseOptions = {
+const baseOptions: BaseOptions = {
+    authMethod: undefined,
+    onAuthTokenRequired: undefined,
     authToken: undefined,
     backend: undefined,
     disableAnalytics: false,
