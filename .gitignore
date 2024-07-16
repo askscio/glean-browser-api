@@ -15,3 +15,5 @@ yarn-error.log
 .opensearch
 typescript/coverage
 build
+.parcel-cache
+dist

@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { EmbedConfigContext, authOptionsKey, baseOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
 import useAuthProvider from "../useAuthProvider";
-import { ThemeVariantOrAuto } from "@gleanwork/web-sdk/theme";
+import { ThemeVariant } from "@gleanwork/web-sdk";
 
 const ChatPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ const ChatPage = () => {
       ...chatCustomConfig,
       ...authParams,
       // Add overrides to the custom config here
-      themeVariant: chatCustomConfig.themeVariant as ThemeVariantOrAuto,
+      themeVariant: chatCustomConfig.themeVariant as ThemeVariant,
     });
   }, [searchParams, setSearchParams, navigate, config, authParams]);
 

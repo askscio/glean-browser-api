@@ -2,13 +2,13 @@ import React, { useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { Typography } from "antd";
 import { useEffect, useState } from "react";
-import type { EmbeddedSearch } from "@gleanwork/web-sdk";
+import type { GleanWebSDK } from "@gleanwork/web-sdk";
 
 import "./styles.css";
 
 declare global {
   interface Window {
-    GleanWebSDK?: EmbeddedSearch;
+    GleanWebSDK?: GleanWebSDK;
   }
 }
 

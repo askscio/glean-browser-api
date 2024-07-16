@@ -11,7 +11,8 @@
     "react-router": "6.9.0",
     "react-router-dom": "6.10.0",
     "react-scripts": "5.0.1",
-    "react-virtualized-auto-sizer": "1.0.9"
+    "react-virtualized-auto-sizer": "1.0.9",
+    "@gleanwork/web-sdk": "2.0.0-rc.1"
   },
   "devDependencies": {
     "@types/react": "18.0.25",

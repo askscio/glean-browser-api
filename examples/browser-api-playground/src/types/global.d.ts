@@ -1,8 +1,8 @@
-import type { EmbeddedSearch } from "@gleanwork/web-sdk";
+import type { GleanWebSDK } from "@gleanwork/web-sdk";
 
 declare global {
   interface Window {
-    GleanWebSDK?: EmbeddedSearch;
+    GleanWebSDK?: GleanWebSDK;
     setConfig: (config: any) => void;
   }
 }
