@@ -2,7 +2,7 @@ import "./styles.css";
 
 function render() {
   const container = document.getElementById('app')
-  EmbeddedSearch.renderChat(container, {
+  GleanWebSDK.renderChat(container, {
     /**
      * The ID of the application used to determine the configuration of underlying chat processes.
      * This should correspond to the ID used with the AI App builder.

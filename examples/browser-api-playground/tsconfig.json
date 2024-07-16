@@ -7,8 +7,14 @@
         "esModuleInterop": true,
         "lib": [
             "dom",
-            "es2015"
+            "es2019"
         ],
-        "jsx": "react-jsx"
+        "jsx": "react-jsx",
+        "target": "ES2020",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "types": [
+            "./src/types/global.d.ts"
+        ]
     }
 }

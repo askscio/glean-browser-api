@@ -8,14 +8,14 @@ const NativeSearchBox = () => {
   const authParams = useAuthProvider(config[authOptionsKey], config[baseOptionsKey].backend)
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
     const NativeSearchBoxCustomConfig = {
       ...config[baseOptionsKey],
       ...config[searchOptionsKey],
     }
 
-    window.EmbeddedSearch.attach(containerRef.current, {
+    window.GleanWebSDK.attach(containerRef.current, {
       ...NativeSearchBoxCustomConfig,
       ...authParams,
       // Add overrides to the custom config here

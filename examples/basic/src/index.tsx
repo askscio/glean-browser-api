@@ -8,7 +8,7 @@ import "./styles.css";
 
 declare global {
   interface Window {
-    EmbeddedSearch?: EmbeddedSearch;
+    GleanWebSDK?: EmbeddedSearch;
   }
 }
 
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     if (!isGleanReady || !containerRef.current) return;
 
-    window.EmbeddedSearch?.attach(containerRef.current, {
+    window.GleanWebSDK?.attach(containerRef.current, {
       onSearch(query) {
         console.log(query);
       },

@@ -23,11 +23,11 @@ const SearchBox = () => {
   );
 
   useEffect(() => {
-    if (!window.EmbeddedSearch || !authToken) return;
+    if (!window.GleanWebSDK || !authToken) return;
 
     // Render a search box with any additional options / customisations applied
     // Documentation: https://dev.glean.com/meta/browser_api/interfaces/SearchBoxOptions.html
-    window.EmbeddedSearch.renderSearchBox(containerRef.current, {
+    window.GleanWebSDK.renderSearchBox(containerRef.current, {
       authToken,
       backend,
       enableActivityLogging: true,

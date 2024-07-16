@@ -11,7 +11,7 @@ const useEmbeddedSearchAuth = (isGuestUser = true) => {
   const backend = 'https://YOUR_DOMAIN-be.glean.com/'
 
   const guestAuthProvider = useMemo(
-    () => window.EmbeddedSearch.createGuestAuthProvider({ backend }),
+    () => window.GleanWebSDK.createGuestAuthProvider({ backend }),
     [backend]
   )
   const [authToken, setAuthToken] = useState(null)

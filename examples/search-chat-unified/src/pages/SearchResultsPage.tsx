@@ -20,12 +20,12 @@ const SearchResults = () => {
   );
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
     // Conditionally render either Chat or Search depending on mode
     switch (mode) {
       case 'search': {
-        window.EmbeddedSearch.renderSearchResults(containerRef.current, {
+        window.GleanWebSDK.renderSearchResults(containerRef.current, {
           query,
           onChat: handleChat,
           onSearch: handleSearch,
@@ -35,7 +35,7 @@ const SearchResults = () => {
         break;
       }
       case 'chat': {
-        window.EmbeddedSearch.renderChat(containerRef.current, {
+        window.GleanWebSDK.renderChat(containerRef.current, {
           chatId,
           supportedModes: ["search_results"],
           onSearch: handleSearch,

@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { EmbedConfigContext, authOptionsKey, baseOptionsKey } from "../EmbedConfigContext";
 import { EmbeddedSearchWidget } from "../types";
 import useAuthProvider from "../useAuthProvider";
+import { ThemeVariantOrAuto } from "@gleanwork/web-sdk/theme";
 
 const ChatPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,19 +13,20 @@ const ChatPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
     const chatCustomConfig = {
       ...config[baseOptionsKey],
       ...config[EmbeddedSearchWidget.Chat]
     }
-    window.EmbeddedSearch.renderChat(containerRef.current, {
+    containerRef.current && window.GleanWebSDK.renderChat(containerRef.current, {
       chatId: searchParams.get("chatId") ?? "",
-      onChat: (chatId: string) => setSearchParams({ chatId }),
+      onChat: (chatId?: string) => chatId && setSearchParams({ chatId }),
       onSearch: (query: string) => navigate({ pathname: '/search', search: new URLSearchParams({ query }).toString() }),
       ...chatCustomConfig,
       ...authParams,
       // Add overrides to the custom config here
+      themeVariant: chatCustomConfig.themeVariant as ThemeVariantOrAuto,
     });
   }, [searchParams, setSearchParams, navigate, config, authParams]);
 

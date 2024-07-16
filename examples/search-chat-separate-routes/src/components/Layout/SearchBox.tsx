@@ -33,9 +33,9 @@ const SearchBox = () => {
   );
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
-    window.EmbeddedSearch.renderSearchBox(containerRef.current, {
+    window.GleanWebSDK.renderSearchBox(containerRef.current, {
       onSearch: handleSearch,
       onChat: handleChat,
       query,

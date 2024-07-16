@@ -7,9 +7,9 @@ const ChatPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
-    window.EmbeddedSearch.renderChat(containerRef.current, {
+    window.GleanWebSDK.renderChat(containerRef.current, {
       chatId: searchParams.get("chatId") ?? "",
       onChat: (chatId: string) => setSearchParams({ chatId }),
       onSearch: (query: string) => navigate({ pathname: '/search', search: new URLSearchParams({ query }).toString() }),

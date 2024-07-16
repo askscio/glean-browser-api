@@ -38,14 +38,14 @@ const SearchBox = () => {
   );
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
     const searchBoxCustomConfig = {
       ...config[baseOptionsKey],
       ...config[searchOptionsKey],
       ...config[EmbeddedSearchWidget.SearchBox]
     }
-    window.EmbeddedSearch.renderSearchBox(containerRef.current, {
+    window.GleanWebSDK.renderSearchBox(containerRef.current, {
       onSearch: handleSearch,
       onChat: handleChat,
       query,

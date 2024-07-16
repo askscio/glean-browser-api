@@ -18,11 +18,11 @@ const SearchResults = () => {
   );
 
   useEffect(() => {
-    if (!window.EmbeddedSearch || !authToken) return;
+    if (!window.GleanWebSDK || !authToken) return;
 
     // Render search results with any additional options / customisations applied
     // Documentation: https://dev.glean.com/meta/browser_api/interfaces/TabbedSearchOptions.html
-    window.EmbeddedSearch.renderSearchResults(containerRef.current, {
+    window.GleanWebSDK.renderSearchResults(containerRef.current, {
       authToken,
       backend,
       query,

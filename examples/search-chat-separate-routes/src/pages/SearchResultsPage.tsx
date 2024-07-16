@@ -29,9 +29,9 @@ const SearchResults = () => {
   );
 
   useEffect(() => {
-    if (!window.EmbeddedSearch) return;
+    if (!window.GleanWebSDK) return;
 
-    window.EmbeddedSearch.renderSearchResults(containerRef.current, {
+    window.GleanWebSDK.renderSearchResults(containerRef.current, {
       query,
       onChat: handleChat,
       onSearch: handleSearch,

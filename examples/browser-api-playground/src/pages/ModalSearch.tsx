@@ -12,13 +12,13 @@ const Playground = () => (
 const MultipleNSRAttachments = () => {
   useEffect(() => {
     document.querySelectorAll('input[data-form-input-type="github-search"]').forEach((element) => {
-      window.EmbeddedSearch.attach(element, {
+      window.GleanWebSDK.attach(element, {
         datasourcesFilter: ['github'],
         key: 'group-1',
       })
     })
     document.querySelectorAll('input[data-form-input-type="jira-search"]').forEach((element) => {
-      window.EmbeddedSearch.attach(element, {
+      window.GleanWebSDK.attach(element, {
         datasourcesFilter: ['jira'],
         key: 'group-2',
       })
@@ -39,7 +39,7 @@ const MultipleNSRAttachments = () => {
 const BasicNSR = () => {
 
   useEffect(() => {
-    window.EmbeddedSearch.attach(document.getElementById('basic-nsr-target'))
+    window.GleanWebSDK.attach(document.getElementById('basic-nsr-target'))
   }, [])
 
   return <Input id='basic-nsr-target' type='search' placeholder="Search..."/>
