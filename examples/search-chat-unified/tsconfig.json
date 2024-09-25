@@ -9,6 +9,6 @@
         ],
         "jsx": "react-jsx",
         "module": "ESNext",
-        "moduleResolution": "Bundler",
+        "moduleResolution": "Bundler"
     }
 }
