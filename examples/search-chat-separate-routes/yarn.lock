@@ -1307,10 +1307,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.0.tgz#a5417ae8427873f1dd08b70b3574b453e67b5f7f"
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
-"@gleanwork/web-sdk@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@gleanwork/web-sdk/-/web-sdk-2.0.0.tgz#f4ec9ba890adc282b11960be952792aa181e86a1"
-  integrity sha512-MSu4WHjy39VnKh0Bc5+YvxvXE610YGAPfCtP6YnpCnyZb2sqwTnMSP/PQ3e6jB7ie9GJJpj/INUs9qn6ah+zwg==
+"@gleanwork/web-sdk@next":
+  version "2.1.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@gleanwork/web-sdk/-/web-sdk-2.1.0-rc.1.tgz#52006fcc932cb46e59bc22f624a6d1372b08b93e"
+  integrity sha512-JDh8G3F9Eb5LnUgSs3JM3K0SkHva4n+aOPTZdGINf8IInolTWhDI6dBvh+ERWsDbJK8vKLdbUMyOx0naAJgGWw==
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
