@@ -34,9 +34,11 @@ export const searchOptionsKey = 'Search Options';
 export const authOptionsKey = 'Auth Options';
 export const sdkOptionsKey = 'SDK Options';
 
+const useNpm = new URLSearchParams(location.search).has('useNpm')
+
 export const defaultConfig = {
     [sdkOptionsKey]: {
-        source: "https://canary.glean.com/embedded-search-latest.min.js",
+        source: useNpm ? 'npm' : "https://canary.glean.com/embedded-search-latest.min.js",
         integrity: ""
     },
     [authOptionsKey]: {
