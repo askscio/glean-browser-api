@@ -40,14 +40,6 @@ function render() {
      * @type {string=} [initialMessage]
      */
     initialMessage: undefined,
-
-    /**
-     * A callback invoked when the user initiates a chat.
-     * @type {(chatId?: string) => void=}
-     */
-    onChat: (chatId) => {
-      console.log(`Chat initiated with ID: ${chatId}`);
-    },
   })
 }
 

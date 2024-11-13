@@ -38,8 +38,6 @@ const SearchResults = () => {
         window.GleanWebSDK.renderChat(containerRef.current, {
           chatId,
           supportedModes: ["search_results"],
-          onSearch: handleSearch,
-          onChat: handleChat,
         });
         break;
       }

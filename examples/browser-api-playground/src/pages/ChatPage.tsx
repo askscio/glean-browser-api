@@ -21,8 +21,6 @@ const ChatPage = () => {
     }
     containerRef.current && window.GleanWebSDK.renderChat(containerRef.current, {
       chatId: searchParams.get("chatId") ?? "",
-      onChat: (chatId?: string) => chatId && setSearchParams({ chatId }),
-      onSearch: (query: string) => navigate({ pathname: '/search', search: new URLSearchParams({ query }).toString() }),
       ...chatCustomConfig,
       ...authParams,
       // Add overrides to the custom config here
