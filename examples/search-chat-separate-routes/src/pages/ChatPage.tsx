@@ -11,8 +11,6 @@ const ChatPage = () => {
 
     window.GleanWebSDK.renderChat(containerRef.current, {
       chatId: searchParams.get("chatId") ?? "",
-      onChat: (chatId: string) => setSearchParams({ chatId }),
-      onSearch: (query: string) => navigate({ pathname: '/search', search: new URLSearchParams({ query }).toString() }),
     });
   }, [searchParams, setSearchParams, navigate]);
 
