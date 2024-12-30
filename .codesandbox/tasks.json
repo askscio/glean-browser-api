@@ -28,6 +28,11 @@
       "preview": {
         "port": 8585
       }
+    },
+    "Clean Cache": {
+      "name": "Clean Cache",
+      "command": "cd examples/browser-api-playground && yarn clean cache",
+      "runAtStart": false
     }
   }
 }
