@@ -11,11 +11,14 @@ app.use(cors());
 app.post("/generateAuthToken", (req, res) => {
   // Extract the backend and user from the request
   const { backend, actAs, apiKey } = req.body;
+  const tokenApiPath = backend.endsWith("/")
+  ? `${backend}rest/api/v1/createauthtoken`
+  : `${backend}/rest/api/v1/createauthtoken`;
 
   // Call the Glean server's createauthtoken endpoint
   axios({
     method: "POST",
-    url: `${backend}/rest/api/v1/createauthtoken`,
+    url: tokenApiPath,
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "X-Scio-Actas": actAs,
@@ -23,20 +26,23 @@ app.post("/generateAuthToken", (req, res) => {
     },
   })
     .then((response) => res.json(response.data))
-    .catch((error) => res.status(500).json({ error: error.message }));
+    .catch((error) => res.status(500).json({ error: error }));
 });
 
 app.post("/generateAnonymousAuthToken", (req, res) => {
   // Extract the backend and user from the request
   const { backend, actAs } = req.body;
+  const tokenApiPath = backend.endsWith("/")
+  ? `${backend}rest/api/v1/createanonymoustoken`
+  : `${backend}/rest/api/v1/createanonymoustoken`;
 
   // Call the Glean server's createanonymoustoken endpoint
   axios({
     method: "post",
-    url: `${backend}/api/v1/createanonymoustoken`,
+    url: tokenApiPath,
   })
     .then((response) => res.json(response.data))
-    .catch((error) => res.status(500).json({ error: error.message }));
+    .catch((error) => res.status(500).json({ error: error }));
 });
 
 app.listen(port, () => {
