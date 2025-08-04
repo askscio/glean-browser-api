@@ -6,8 +6,8 @@
       "command": "cd examples/browser-api-playground"
     },
     {
-      "name": "yarn install",
-      "command": "yarn install"
+      "name": "pnpm install",
+      "command": "pnpm install"
     }
   ],
 
@@ -15,7 +15,7 @@
   "tasks": {
     "FE Server": {
       "name": "FE Server",
-      "command": "cd examples/browser-api-playground && yarn && yarn start:client",
+      "command": "cd examples/browser-api-playground && pnpm i && pnpm start:client",
       "runAtStart": true,
       "preview": {
         "port": 3000
@@ -23,7 +23,7 @@
     },
     "BE Server": {
       "name": "BE Server",
-      "command": "cd examples/browser-api-playground && yarn && yarn start:server",
+      "command": "cd examples/browser-api-playground && pnpm i && pnpm start:server",
       "runAtStart": true,
       "preview": {
         "port": 8585
