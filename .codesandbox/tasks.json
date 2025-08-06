@@ -4,10 +4,6 @@
     {
       "name": "cd examples/browser-api-playground",
       "command": "cd examples/browser-api-playground"
-    },
-    {
-      "name": "pnpm install",
-      "command": "pnpm install"
     }
   ],
 
