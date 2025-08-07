@@ -28,7 +28,7 @@
     "typescript": "4.4.2"
   },
   "scripts": {
-    "start:client": "pnpm build && node webserver.js",
+    "start:client": "node webserver.js",
     "start:server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
