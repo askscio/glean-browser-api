@@ -29,7 +29,6 @@ const Header = () => {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const { pathname } = useLocation()
   const navigate = useNavigate()
- 
   const onClick: MenuProps['onClick'] = (e) => navigate(e.key);
 
   return (
@@ -39,21 +38,43 @@ const Header = () => {
         selectedKeys={[pathname]}
         items={items}
         onClick={onClick}
-        style={{width: '100%'}}
+        style={{width: '85%'}}
       />
-      <div style={{display: "flex", lineHeight: "16px"}}>
-        <span>current sdk source: {contextValue.config?.[sdkOptionsKey].source}</span>
+      <div className="flex items-center">
+        <span title={contextValue.config?.[sdkOptionsKey].source}>current sdk source: </span>
+        <select
+          value={
+            contextValue.config?.[sdkOptionsKey].source.match(/canary\.glean\.com|local\.glean\.com:8888/)
+              ? contextValue.config?.[sdkOptionsKey].source
+              : "custom"
+          }
+          onChange={(e) => {
+            contextValue.setConfig({
+              ...contextValue.config,
+              [sdkOptionsKey]: {
+                ...contextValue.config?.[sdkOptionsKey],
+                source: e.target.value
+              }
+            })
+          }}
+          name="sdk-source"
+          className="ml-2 mr-4 p-px rounded-md outline outline-1"
+        >
+          <option value="https://canary.glean.com/embedded-search-latest.min.js">Canary</option>
+          <option value="https://local.glean.com:8888/embedded-search-latest.min.js">Local</option>
+          <option value="custom" disabled>Custom</option>
+        </select>
         <button onClick={() => setSettingsOpen(true)} className="ml-auto">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-settings"
           >
             <circle cx="12" cy="12" r="3"></circle>
