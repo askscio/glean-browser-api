@@ -1,9 +1,8 @@
 import { Menu, MenuProps, Layout } from "antd";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import SettingsDrawer from "../SettingsDrawer";
-import useConfigStore from "../../useConfigStore";
-import { sdkOptionsKey } from "../../EmbedConfigContext";
+import { EmbedConfigContext, sdkOptionsKey } from "../../EmbedConfigContext";
 
 const items: MenuProps['items'] = [
   {
@@ -25,14 +24,14 @@ const items: MenuProps['items'] = [
 ];
 
 const Header = () => {
-  const contextValue = useConfigStore()
+  const { config, setConfig } = useContext(EmbedConfigContext);
   const [settingsOpen, setSettingsOpen] = useState(false)
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const onClick: MenuProps['onClick'] = (e) => navigate(e.key);
 
   return (
-    <Layout.Header className="bg-white w-full flex items-center flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md">
+    <Layout.Header className="bg-white w-full flex items-center flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md justify-between">
       <Menu
         mode="horizontal"
         selectedKeys={[pathname]}
@@ -41,18 +40,18 @@ const Header = () => {
         style={{width: '85%'}}
       />
       <div className="flex items-center">
-        <span title={contextValue.config?.[sdkOptionsKey].source}>current sdk source: </span>
+        <span title={config?.[sdkOptionsKey].source}>current sdk source: </span>
         <select
           value={
-            contextValue.config?.[sdkOptionsKey].source.match(/canary\.glean\.com|local\.glean\.com:8888/)
-              ? contextValue.config?.[sdkOptionsKey].source
+            config?.[sdkOptionsKey].source.match(/canary\.glean\.com|local\.glean\.com:8888/)
+              ? config?.[sdkOptionsKey].source
               : "custom"
           }
           onChange={(e) => {
-            contextValue.setConfig({
-              ...contextValue.config,
+            setConfig({
+              ...config,
               [sdkOptionsKey]: {
-                ...contextValue.config?.[sdkOptionsKey],
+                ...config?.[sdkOptionsKey],
                 source: e.target.value
               }
             })
