@@ -1,9 +1,8 @@
 import { Menu, MenuProps, Layout } from "antd";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import SettingsDrawer from "../SettingsDrawer";
-import useConfigStore from "../../useConfigStore";
-import { sdkOptionsKey } from "../../EmbedConfigContext";
+import { EmbedConfigContext, sdkOptionsKey } from "../../EmbedConfigContext";
 
 const items: MenuProps['items'] = [
   {
@@ -25,35 +24,56 @@ const items: MenuProps['items'] = [
 ];
 
 const Header = () => {
-  const contextValue = useConfigStore()
+  const { config, setConfig } = useContext(EmbedConfigContext);
   const [settingsOpen, setSettingsOpen] = useState(false)
   const { pathname } = useLocation()
   const navigate = useNavigate()
- 
   const onClick: MenuProps['onClick'] = (e) => navigate(e.key);
 
   return (
-    <Layout.Header className="bg-white w-full flex items-center flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md">
+    <Layout.Header className="bg-white w-full flex items-center flex-grow-0 px-4 w-fixed w-full flex-shrink flex-grow-0 px-4 border-b border-gray-20 shadow-md justify-between">
       <Menu
         mode="horizontal"
         selectedKeys={[pathname]}
         items={items}
         onClick={onClick}
-        style={{width: '100%'}}
+        style={{width: '85%'}}
       />
-      <div style={{display: "flex", lineHeight: "16px"}}>
-        <span>current sdk source: {contextValue.config?.[sdkOptionsKey].source}</span>
+      <div className="flex items-center">
+        <span title={config?.[sdkOptionsKey].source}>current sdk source: </span>
+        <select
+          value={
+            config?.[sdkOptionsKey].source.match(/canary\.glean\.com|local\.glean\.com:8888/)
+              ? config?.[sdkOptionsKey].source
+              : "custom"
+          }
+          onChange={(e) => {
+            setConfig({
+              ...config,
+              [sdkOptionsKey]: {
+                ...config?.[sdkOptionsKey],
+                source: e.target.value
+              }
+            })
+          }}
+          name="sdk-source"
+          className="ml-2 mr-4 p-px rounded-md outline outline-1"
+        >
+          <option value="https://canary.glean.com/embedded-search-latest.min.js">Canary</option>
+          <option value="https://local.glean.com:8888/embedded-search-latest.min.js">Local</option>
+          <option value="custom" disabled>Custom</option>
+        </select>
         <button onClick={() => setSettingsOpen(true)} className="ml-auto">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-settings"
           >
             <circle cx="12" cy="12" r="3"></circle>
