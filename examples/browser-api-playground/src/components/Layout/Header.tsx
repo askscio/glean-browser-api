@@ -37,7 +37,6 @@ const Header = () => {
         selectedKeys={[pathname]}
         items={items}
         onClick={onClick}
-        style={{width: '85%'}}
       />
       <div className="flex items-center">
         <span title={config?.[sdkOptionsKey].source}>current sdk source: </span>
