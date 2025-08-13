@@ -36,7 +36,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch": "nodemon --watch src --ext js,jsx,ts,tsx,css --exec \"pnpm run build\"",
-    "dev:client": "concurrently \"pnpm run watch\" \"pnpm run start:client\""
+    "dev:client": "concurrently \"pnpm run watch\" \"pnpm react-scripts start\""
   },
   "browserslist": [
     ">0.2%",
