@@ -13,12 +13,29 @@ const baseOptions = {
     locale: undefined,
     themeVariant: 'light',
     theme: {},
-    webAppUrl: undefined
+    webAppUrl: undefined,
+    // Adding missing options from the requirements
+    debug: undefined,
+    disableAssistant: undefined,
+    docURL: undefined,
+    enable3PCookieAccessRequest: undefined,
+    fontFamily: undefined,
+    fontSize: undefined,
+    key: undefined,
+    organizationId: undefined,
+    unauthorizedMessage: undefined,
+    useCase: undefined,
+    fontFaces: []
 }
 
 const searchOptons = {
     datasource: undefined,
     datasourcesFilter: [],
+    // Adding missing search options
+    filters: [],
+    hideAutocomplete: undefined,
+    initialFilters: [],
+    query: undefined
 }
 
 const boxOptions = {
@@ -34,6 +51,16 @@ export const searchOptionsKey = 'Search Options';
 export const authOptionsKey = 'Auth Options';
 export const sdkOptionsKey = 'SDK Options';
 
+// Adding new option keys
+export const fontFacesKey = 'Font Faces';
+export const searchBoxKey = 'Search Box';
+export const searchResultsKey = 'Search Results';
+export const chatOptionsKey = 'Chat Options';
+export const recommendationsOptionsKey = 'Recommendations Options';
+export const sidePanelOptionsKey = 'Side Panel Options';
+export const modalSearchOptionsKey = 'Modal Search Options';
+export const eventHandlersKey = 'Event Handlers';
+
 const useNpm = new URLSearchParams(location.search).has('useNpm')
 
 export const defaultConfig = {
@@ -45,6 +72,7 @@ export const defaultConfig = {
         type: AuthType.Default,
         actAs: undefined,
         apiKey: undefined,
+        authToken: undefined, // Adding authToken support
     },
     [baseOptionsKey]: baseOptions,
     [searchOptionsKey]: searchOptons,
@@ -54,7 +82,9 @@ export const defaultConfig = {
             ...boxOptions,
             borderRadius: 24,
             boxShadow: "none",
-            placeholderText: "Search for anything..."
+            placeholderText: "Search for anything...",
+            fontSize: undefined,
+            searchIconUrl: undefined
         },
     },
     [EmbeddedSearchWidget.SearchResults]: {
@@ -63,11 +93,96 @@ export const defaultConfig = {
         showAutocompleteContent: false,
         showHomePageContent: false,
         showInlineSearchBox: false,
+        // Adding missing search results options
+        defaultResultTabs: undefined,
+        hideDatasourceFilterSelector: undefined,
+        hideFiltersColumn: undefined,
+        paginated: undefined,
+        topBarFilterOverrides: []
     },
     [EmbeddedSearchWidget.Chat]: {
-        customizations: { container: makeValuesUndefined(boxOptions) },
+        customizations: { 
+            container: makeValuesUndefined(boxOptions),
+            features: {
+                agentLibrary: undefined,
+                applicationLibrary: undefined,
+                chatMenu: undefined,
+                chatSettings: undefined,
+                clearChat: undefined,
+                createPrompt: undefined,
+                feedback: undefined,
+                newChatButton: undefined,
+                promptLibrary: undefined
+            },
+            login: {
+                hideLogo: undefined
+            }
+        },
         initialMessage: undefined,
+        // Adding missing chat options
+        agent: undefined,
+        agentId: undefined,
+        applicationId: undefined,
+        chatId: undefined,
+        landingPage: undefined,
+        promptId: undefined,
+        restrictToApplication: undefined,
+        showAdvancedChatBarOptions: undefined,
+        source: undefined
     },
+    // Adding new widget configurations
+    [EmbeddedSearchWidget.Recommendations]: {
+        expandable: undefined,
+        height: undefined,
+        sourceDocument: undefined,
+        customizations: {
+            ...makeValuesUndefined(boxOptions),
+            searchBox: {
+                searchIconUrl: undefined,
+                placeholderText: undefined,
+                fontSize: undefined
+            },
+            showNoRecommendationsHint: undefined
+        }
+    },
+    [EmbeddedSearchWidget.SidePanel]: {
+        hostMeta: {
+            platform: undefined,
+            version: undefined
+        },
+        widgetConfigs: {
+            customPrompt: {
+                disabled: undefined
+            },
+            search: {
+                disabled: undefined
+            },
+            suggestedNextSteps: {
+                disabled: undefined
+            },
+            composer: {
+                disabled: undefined,
+                initialContent: undefined
+            }
+        },
+        datasourcesFilter: [],
+        sourceDocument: undefined
+    },
+    [EmbeddedSearchWidget.ModalSearch]: {
+        showNativeSearchToggle: undefined,
+        searchBoxCustomizations: makeValuesUndefined(boxOptions)
+    },
+    // Adding event handlers section
+    [eventHandlersKey]: {
+        onAuthTokenRequired: undefined,
+        onChat: undefined,
+        onCopy: undefined,
+        onDatasourceChange: undefined,
+        onDetach: undefined,
+        onDraftExport: undefined,
+        onResize: undefined,
+        onSearch: undefined
+    }
 }
 
 export type ConfigType = typeof defaultConfig;

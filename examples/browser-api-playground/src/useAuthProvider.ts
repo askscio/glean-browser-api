@@ -73,6 +73,28 @@ const useAuthProvider = (authOptions: AuthOptions, backend?: string) => {
         })();
         break;
       }
+      case AuthType.Token: {
+        // For token auth type, use the provided authToken directly
+        if (authOptions.authToken) {
+          setAuthState({
+            authToken: authOptions.authToken,
+          });
+        } else {
+          setAuthState(defaultAuthState);
+        }
+        break;
+      }
+      case AuthType.SSO: {
+        // For SSO, we typically wouldn't have a token immediately
+        // The application would need to handle SSO flow
+        setAuthState({
+          onAuthTokenRequired: async () => {
+            // This would trigger SSO flow in a real implementation
+            console.log('SSO auth flow would be triggered here');
+          },
+        });
+        break;
+      }
       case AuthType.Default:
         setAuthState(defaultAuthState);
     }
