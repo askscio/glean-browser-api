@@ -14,7 +14,6 @@ const baseOptions = {
     themeVariant: 'light',
     theme: {},
     webAppUrl: undefined,
-    // Adding missing options from the requirements
     debug: undefined,
     disableAssistant: undefined,
     docURL: undefined,
@@ -31,7 +30,6 @@ const baseOptions = {
 const searchOptons = {
     datasource: undefined,
     datasourcesFilter: [],
-    // Adding missing search options
     filters: [],
     hideAutocomplete: undefined,
     initialFilters: [],
@@ -51,7 +49,6 @@ export const searchOptionsKey = 'Search Options';
 export const authOptionsKey = 'Auth Options';
 export const sdkOptionsKey = 'SDK Options';
 
-// Adding new option keys
 export const fontFacesKey = 'Font Faces';
 export const searchBoxKey = 'Search Box';
 export const searchResultsKey = 'Search Results';
@@ -72,7 +69,7 @@ export const defaultConfig = {
         type: AuthType.Default,
         actAs: undefined,
         apiKey: undefined,
-        authToken: undefined, // Adding authToken support
+        authToken: undefined,
     },
     [baseOptionsKey]: baseOptions,
     [searchOptionsKey]: searchOptons,
@@ -93,7 +90,6 @@ export const defaultConfig = {
         showAutocompleteContent: false,
         showHomePageContent: false,
         showInlineSearchBox: false,
-        // Adding missing search results options
         defaultResultTabs: undefined,
         hideDatasourceFilterSelector: undefined,
         hideFiltersColumn: undefined,
@@ -119,7 +115,6 @@ export const defaultConfig = {
             }
         },
         initialMessage: undefined,
-        // Adding missing chat options
         agent: undefined,
         agentId: undefined,
         applicationId: undefined,
@@ -130,7 +125,6 @@ export const defaultConfig = {
         showAdvancedChatBarOptions: undefined,
         source: undefined
     },
-    // Adding new widget configurations
     [EmbeddedSearchWidget.Recommendations]: {
         expandable: undefined,
         height: undefined,
@@ -172,7 +166,6 @@ export const defaultConfig = {
         showNativeSearchToggle: undefined,
         searchBoxCustomizations: makeValuesUndefined(boxOptions)
     },
-    // Adding event handlers section
     [eventHandlersKey]: {
         onAuthTokenRequired: undefined,
         onChat: undefined,
