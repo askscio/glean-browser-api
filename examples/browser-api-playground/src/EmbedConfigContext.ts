@@ -49,15 +49,6 @@ export const searchOptionsKey = 'Search Options';
 export const authOptionsKey = 'Auth Options';
 export const sdkOptionsKey = 'SDK Options';
 
-export const fontFacesKey = 'Font Faces';
-export const searchBoxKey = 'Search Box';
-export const searchResultsKey = 'Search Results';
-export const chatOptionsKey = 'Chat Options';
-export const recommendationsOptionsKey = 'Recommendations Options';
-export const sidePanelOptionsKey = 'Side Panel Options';
-export const modalSearchOptionsKey = 'Modal Search Options';
-export const eventHandlersKey = 'Event Handlers';
-
 const useNpm = new URLSearchParams(location.search).has('useNpm')
 
 export const defaultConfig = {
@@ -124,57 +115,6 @@ export const defaultConfig = {
         restrictToApplication: undefined,
         showAdvancedChatBarOptions: undefined,
         source: undefined
-    },
-    [EmbeddedSearchWidget.Recommendations]: {
-        expandable: undefined,
-        height: undefined,
-        sourceDocument: undefined,
-        customizations: {
-            ...makeValuesUndefined(boxOptions),
-            searchBox: {
-                searchIconUrl: undefined,
-                placeholderText: undefined,
-                fontSize: undefined
-            },
-            showNoRecommendationsHint: undefined
-        }
-    },
-    [EmbeddedSearchWidget.SidePanel]: {
-        hostMeta: {
-            platform: undefined,
-            version: undefined
-        },
-        widgetConfigs: {
-            customPrompt: {
-                disabled: undefined
-            },
-            search: {
-                disabled: undefined
-            },
-            suggestedNextSteps: {
-                disabled: undefined
-            },
-            composer: {
-                disabled: undefined,
-                initialContent: undefined
-            }
-        },
-        datasourcesFilter: [],
-        sourceDocument: undefined
-    },
-    [EmbeddedSearchWidget.ModalSearch]: {
-        showNativeSearchToggle: undefined,
-        searchBoxCustomizations: makeValuesUndefined(boxOptions)
-    },
-    [eventHandlersKey]: {
-        onAuthTokenRequired: undefined,
-        onChat: undefined,
-        onCopy: undefined,
-        onDatasourceChange: undefined,
-        onDetach: undefined,
-        onDraftExport: undefined,
-        onResize: undefined,
-        onSearch: undefined
     }
 }
 

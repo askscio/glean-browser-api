@@ -20,7 +20,4 @@ export const enum EmbeddedSearchWidget {
     SearchBox = 'Search Box',
     SearchResults = 'Search Results',
     Chat = 'Chat',
-    Recommendations = 'Recommendations',
-    SidePanel = 'Side Panel',
-    ModalSearch = 'Modal Search'
 } 
