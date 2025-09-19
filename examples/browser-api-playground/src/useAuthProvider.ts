@@ -73,6 +73,13 @@ const useAuthProvider = (authOptions: AuthOptions, backend?: string) => {
         })();
         break;
       }
+      case AuthType.Token: {
+        setAuthState(authOptions.authToken 
+          ? { authToken: authOptions.authToken } 
+          : defaultAuthState
+        );
+        break;
+      }
       case AuthType.Default:
         setAuthState(defaultAuthState);
     }

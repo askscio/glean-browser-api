@@ -13,12 +13,27 @@ const baseOptions = {
     locale: undefined,
     themeVariant: 'light',
     theme: {},
-    webAppUrl: undefined
+    webAppUrl: undefined,
+    debug: undefined,
+    disableAssistant: undefined,
+    docURL: undefined,
+    enable3PCookieAccessRequest: undefined,
+    fontFamily: undefined,
+    fontSize: undefined,
+    key: undefined,
+    organizationId: undefined,
+    unauthorizedMessage: undefined,
+    useCase: undefined,
+    fontFaces: []
 }
 
 const searchOptons = {
     datasource: undefined,
     datasourcesFilter: [],
+    filters: [],
+    hideAutocomplete: undefined,
+    initialFilters: [],
+    query: undefined
 }
 
 const boxOptions = {
@@ -45,6 +60,7 @@ export const defaultConfig = {
         type: AuthType.Default,
         actAs: undefined,
         apiKey: undefined,
+        authToken: undefined,
     },
     [baseOptionsKey]: baseOptions,
     [searchOptionsKey]: searchOptons,
@@ -54,7 +70,9 @@ export const defaultConfig = {
             ...boxOptions,
             borderRadius: 24,
             boxShadow: "none",
-            placeholderText: "Search for anything..."
+            placeholderText: "Search for anything...",
+            fontSize: undefined,
+            searchIconUrl: undefined
         },
     },
     [EmbeddedSearchWidget.SearchResults]: {
@@ -63,11 +81,41 @@ export const defaultConfig = {
         showAutocompleteContent: false,
         showHomePageContent: false,
         showInlineSearchBox: false,
+        defaultResultTabs: undefined,
+        hideDatasourceFilterSelector: undefined,
+        hideFiltersColumn: undefined,
+        paginated: undefined,
+        topBarFilterOverrides: []
     },
     [EmbeddedSearchWidget.Chat]: {
-        customizations: { container: makeValuesUndefined(boxOptions) },
+        customizations: { 
+            container: makeValuesUndefined(boxOptions),
+            features: {
+                agentLibrary: undefined,
+                applicationLibrary: undefined,
+                chatMenu: undefined,
+                chatSettings: undefined,
+                clearChat: undefined,
+                createPrompt: undefined,
+                feedback: undefined,
+                newChatButton: undefined,
+                promptLibrary: undefined
+            },
+            login: {
+                hideLogo: undefined
+            }
+        },
         initialMessage: undefined,
-    },
+        agent: undefined,
+        agentId: undefined,
+        applicationId: undefined,
+        chatId: undefined,
+        landingPage: undefined,
+        promptId: undefined,
+        restrictToApplication: undefined,
+        showAdvancedChatBarOptions: undefined,
+        source: undefined
+    }
 }
 
 export type ConfigType = typeof defaultConfig;
