@@ -43,11 +43,11 @@ const SearchResults = () => {
       ...config[EmbeddedSearchWidget.SearchResults],
     }
     window.GleanWebSDK.renderSearchResults(containerRef.current, {
-      query,
       onChat: handleChat,
       onSearch: handleSearch,
       ...searchResultsCustomConfig,
       ...authParams,
+      query,
       // Add overrides to the custom config here
     });
   }, [query, handleSearch, handleChat, config, authParams]);
