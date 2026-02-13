@@ -6,6 +6,7 @@ import ChatPage from "./pages/ChatPage";
 import HomePage from "./pages/HomePage";
 import ModalSearch from "./pages/ModalSearch";
 import SearchResultsPage from "./pages/SearchResultsPage";
+import SettingsPage from "./pages/SettingsPage";
 
 import "./styles.css";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/modal-search" element={<ModalSearch />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </PageLayout>
     </BrowserRouter>
