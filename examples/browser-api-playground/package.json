@@ -6,7 +6,7 @@
   "main": "src/index.tsx",
   "dependencies": {
     "@ant-design/icons": "^5.2.5",
-    "@gleanwork/web-sdk": "next",
+    "@gleanwork/web-sdk": "^2.4.0",
     "antd": "^5.8.2",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
