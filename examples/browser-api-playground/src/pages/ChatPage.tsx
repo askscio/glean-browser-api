@@ -31,7 +31,7 @@ const ChatPage = () => {
       ...authParams,
       // Add overrides to the custom config here
       themeVariant: chatCustomConfig.themeVariant as ThemeVariant,
-      chatId: searchParams.get("chatId") ?? "",
+      chatId: searchParams.get("chatId") ?? chatCustomConfig.chatId,
     });
 
     handler?.on('chat:location_update', ({name, type, id}) => {
